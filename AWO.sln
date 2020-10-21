@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWO", "AWO\AWO.csproj", "{0C3F99D9-622E-4A27-AEB8-9C757D948FCF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwoAppServices", "AwoAppServices\AwoAppServices.csproj", "{04F9EE19-A76D-412E-AF3B-51D45466D92E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C3F99D9-622E-4A27-AEB8-9C757D948FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C3F99D9-622E-4A27-AEB8-9C757D948FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C3F99D9-622E-4A27-AEB8-9C757D948FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C3F99D9-622E-4A27-AEB8-9C757D948FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F9EE19-A76D-412E-AF3B-51D45466D92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F9EE19-A76D-412E-AF3B-51D45466D92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F9EE19-A76D-412E-AF3B-51D45466D92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F9EE19-A76D-412E-AF3B-51D45466D92E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0E89656-B2FD-4735-8469-ACE940100F9A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+﻿@model List<UserRoleViewModel>
+<div id="userRoles">
+
+    @if (Model != null)
+    {
+
+        @foreach (var user in Model)
+        {
+            <div class="row">
+                <div class="col">
+                    <span>@user.UserName</span>
+                </div>
+            </div>
+        }
+
+    } else
+    {
+        <span> No users in this role yet</span>
+    }
+
+</div>

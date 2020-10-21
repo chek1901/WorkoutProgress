@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<ul class="navbar-nav ml-auto">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+        <li class="nav-item navbar-right-items">
+            <a id="manage" class="nav-link m-1" asp-action="Manage" asp-controller="Account" title="Manage">
+                <i class="fas fa-user-cog fa-2x"></i>
+                <span>Account</span>
+            </a>
+        </li>
+        <li class="nav-item navbar-right-items">
+            <input type="hidden" class="logoutUser" value="@User.Identity.Name"/>
+            <button class="nav-link m-1 logout" type="button"
+                    @*data-toggle="modal"
+                    data-target="#logoutModal"*@>
+                <i class="fab fa-drupal fa-2x"></i>
+                Logout
+            </button>
+        </li>
+   }
+    else
+    {
+        <li class="nav-item mr-auto navbar-right-items">
+
+            <a class="nav-link btn btn-sm" id="login" asp-action="Login" asp-controller="Account">
+                <i class="far fa-user fa-2x"></i>
+                <span class="p-1">Login</span>
+            </a>
+        </li>
+
+        <li class="nav-item mr-auto navbar-right-items">
+            <a class="nav-link btn btn-sm" id="register" asp-action="Register" asp-controller="Account">
+                <i class="fas fa-user-plus fa-2x"></i>
+                <span class="p-1">Register</span>
+
+            </a>
+        </li>
+    }
+</ul>
+
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-warning">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Logout >> <span>@User.Identity.Name</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure You want to logout?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                <form method="post" asp-action="Logout" asp-controller="Account">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

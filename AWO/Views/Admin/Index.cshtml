@@ -1,0 +1,67 @@
+﻿@model AdminManageViewModel
+
+@{
+    ViewData["Title"] = "Admin Management Panel";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <section class="section-header text-center">
+                <h2>@ViewData["Title"]</h2>
+            </section>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <ul class="nav adminNav" id="myTab" role="tablist">
+
+                <li class="nav-item m-1 adminNavItem">
+                    <a class="nav-link adminBtn flex-fill" href="#userManage" aria-controls="userManage" 
+                       aria-selected="true" role="tab" data-toggle="tab">
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                        <span class="p-1">Users</span>
+                    </a>
+                </li>
+
+                <li class="nav-item m-1 adminNavItem">
+                    <a class="nav-link adminBtn flex-fill" href="#roleManage" aria-controls="roleManage"
+                       aria-selected="false" role="tab" data-toggle="tab">
+                        <i class="fas fa-user-tag" aria-hidden="true"></i>
+                        <span class="p-1">Roles</span>
+                    </a>
+                </li>
+
+                <li class="nav-item m-1 adminNavItem">
+                    <a class="nav-link adminBtn flex-fill" href="#categoryManage" aria-controls="categoryManage"
+                       aria-selected="false" role="tab" data-toggle="tab">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <span class="p-1">Categories</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- Tab panes -->
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="userManage">
+                    @await Html.PartialAsync("_ListUserPartial", Model.UserListViewModel)
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="roleManage">
+                    @await Html.PartialAsync("_ListRolePartial", Model.RoleListViewModel)
+                </div>
+
+                <div role="tabpanel" class="tab-pane bg-white" id="categoryManage">
+                    @await Html.PartialAsync("_CategoryPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-placeholder"></div>
+</div>

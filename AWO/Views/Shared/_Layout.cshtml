@@ -1,0 +1,150 @@
+﻿@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AWO</title>
+
+    <!-- Bootstrap 4 cdn -->
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    @*<link rel="preload" href="~/lib/bootstrap/dist/css/bootstrap.min.css" as="style" onload="this.onload = null; this.rel='stylesheet'"/>*@
+    <!-- Misc Style sheets -->
+    <link rel="preload" href="~/css/site.css" as="style" onload="this.onload = null; this.rel='stylesheet'" />
+    @*<link rel="preload" href="~/css/sidebarChillerTheme.css" as="style" onload="this.onload = null; this.rel='stylesheet'" />*@
+    <link href="~/css/sidebarChillerTheme.css" rel="stylesheet" />
+    <link rel="preload" href="~/css/navbar.css" as="style" onload="this.onload = null; this.rel='stylesheet'" />
+    <link rel="preload" href="~/css/login.css" as="style" onload="this.onload = null; this.rel='stylesheet'" />
+    <link rel="preload" href="~/css/register.css" as="style" onload="this.onload = null; this.rel='stylesheet'" />
+    <link rel="preload" href="~/css/adminManagement.css" as="style" onload="this.onload = null; this.rel='stylesheet'" />
+
+    <!-- Fontawesome -->
+    <link rel="preload" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" as="style" onload="this.onload = null; this.rel='stylesheet'">
+    <link rel="preload" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" as="style" onload="this.onload=null; this.rel='stylesheet'"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          as="style" onload="this.onload=null; this.rel='stylesheet'">
+
+    <!-- Google fonts cdn -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap"
+          as="style" onload="this.onload = null; this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+          as="style" onload="this.onload = null; this.rel='stylesheet'">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+
+    <!-- ION ICONS-->
+    @*<link rel="preload" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+          as="style" onload="this.onload = null; this.rel='stylesheet'">*@
+
+</head>
+
+<body>
+    <div class="page-wrapper chiller-theme">
+        <nav class="navbar navbar-expand-custom navbar-light bg-transparent layoutNavbar">
+            <div class="container-fluid">
+                <a class="navbar-brand pr-3 solutionHeader" href="/">
+                    <img id="navbarBrandLogo" class="img-fluid" alt="Brand logo" />
+                </a>
+
+                <button class="navbar-toggler collapsed" type="button"
+                        data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
+                </button>
+
+                <div class="collapse navbar-collapse mt-auto" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto mt-auto">
+                        <li class="nav-item layout-navbar-item">
+                            <a class="nav-link layoutNavLink nav-link-fade-up" href="#">
+                                <i class="fa fa-home" aria-hidden="true"> </i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item layout-navbar-item">
+                            <a class="nav-link layoutNavLink" href="#">
+                                <i class="fa fa-superpowers" aria-hidden="true"></i>
+                                <span>Api</span>
+                            </a>
+                        </li>
+                        <li class="nav-item layout-navbar-item">
+                            <a class="nav-link layoutNavLink" href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                <span>News</span>
+                            </a>
+                        </li>
+                        <li class="nav-item layout-navbar-item">
+                            <a class="nav-link layoutNavLink"
+                               data-toggle="collapse" href="#searchNavbar" role="button" aria-expanded="false" aria-controls="searchFormCollapse">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <span>Search</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="collapse" id="searchNavbar">
+                <div class="d-flex row justify-content-center collapse" id="searchNavbar">
+                    <div class="col-lg-3 col-md-6 col-sm-8">
+                        <div class="input-group">
+                            <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+                            <span class="input-group-append">
+                                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main class="page-content">
+
+            @if (signInManager.IsSignedIn(User))
+            {
+                <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <partial name="_SideBarPartial" />
+            }
+
+            @RenderBody()
+
+        </main>
+    </div>
+
+    <footer class="footer d-flex justify-content-center">
+        <div class="col-6 p-2 text-center">
+            <h4>&copy; 2020 Awo Gym </h4>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"
+            integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- OWN JAVASCRIPT FILES -->
+    <script type="text/javascript" src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/ownSource.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/logout.js"></script>
+    <!-- SWEET ALERT 2 -->
+    @*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.1/dist/sweetalert2.all.min.js"
+            integrity="sha256-I//nGqEYcRlQfWdLiDc5tcWUU3GzGfJpZWs2qsfj3Dk=" crossorigin="anonymous"></script>*@
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿@model ManageAccountViewModel
+
+@{
+    ViewData["Title"] = "User settings";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="section-header">
+
+                <h1 class="text-center"> @ViewData["Title"] > > </h1>
+            </div>
+        </div>
+
+        <div class="col-4">
+                <p class="lead font-weight-lighter"> @Model.User.UserName </p>
+            <p class="lead"></p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-5 col-sm-6 text-center">
+            <h2>Personal info</h2>
+            <p >Click on the button to toggle between showing and hiding content.</p>
+            <button type="button" class="btn btn-primary m-2" data-toggle="collapse" data-target="#demo">View User info</button>
+            <button type="button" class="myBtn">  PRESS ME </button>
+        </div>
+    @*</div>*@
+    @*<div class="row justify-content-center">*@
+
+        <div class="col-lg-4 col-md-5 col-sm-6 float-left">
+            <div id="demo" class="collapse">
+                <form method="post" asp-action="Manage" asp-controller="Account">
+                    <div class="input-group input-group-lg m-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text iconCustom" id="inputGroup-sizing-lg">
+                                <i class="far fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="User name" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+                               asp-for="User.UserName" readonly>
+                    </div>
+                    <div class="input-group input-group-lg m-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">
+                                <i class="far fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control"
+                               placeholder="Email" aria-label="Large"
+                               aria-describedby="inputGroup-sizing-sm"
+                               asp-for="Email" readonly>
+                    </div>
+
+                    <div class="input-group input-group-lg m-1">
+                        <div class="input-group-prepend">
+
+                            <span class="input-group-text" id="inputGroup-sizing-lg">
+                                <i class="far fa-address-book"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+                               asp-for="FirstName" placeholder="Enter given name">
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
+
+                    <div class="input-group input-group-lg m-1">
+                        <div class="input-group-prepend">
+
+                            <span class="input-group-text" id="inputGroup-sizing-lg">
+                                <i class="far fa-address-book"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+                               asp-for="LastName" placeholder="Enter surname">
+                        <span asp-validation-for="LastName"></span>
+                    </div>
+
+                    <div class="input-group input-group-lg m-1">
+                        <div class="input-group-prepend">
+
+                            <span class="input-group-text" id="inputGroup-sizing-lg">
+                                <i class="fas fa-mobile-alt"></i>
+
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+                               asp-for="Telephone" placeholder="Enter mobile number...">
+                        <span asp-validation-for="Telephone"></span>
+                    </div>
+                    <div class="input-group m-2">
+                        <button type="submit" class="btn btn-primary"> Apply changes </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

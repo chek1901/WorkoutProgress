@@ -1,0 +1,23 @@
+﻿.registerBtn {
+    background-color: #f1bb4e;
+}
+
+#bg-image {
+    background-image: url('https://res.cloudinary.com/mhmd/image/upload/v1555917661/art-colorful-contemporary-2047905_dxtao7.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+#registerBg {
+    background-color: #333333 !important;
+    background-size: cover;
+}
+
+#register {
+    font-size: 18px !important;
+    color: #314C64;
+}
+
+#register:hover {
+    color: lightcoral !important;
+}

@@ -1,0 +1,50 @@
+﻿@model RoleListViewModel
+
+<div class="container border-0 w-100" id="updateCard">
+    <div class="row">
+        <div class="col-6">
+            <h4 class="section-header"> Manage Roles</h4>
+        </div>
+
+        <div class="col-6 text-right p-2">
+            <button type="button" class="btn btn-warning openModal"
+                    data-toggle="ajax-modal"
+                    data-target="#createRoleModal"
+                    data-url="@Url.Action("CreateRole")">
+                Add new Role
+            </button>
+        </div>
+
+    </div>
+    <div class="row d-flex align-content-space-around flex-wrap">
+        @if (Model.Roles != null)
+        {
+            foreach (var role in Model.Roles)
+            {
+                <div class="col-lg-4 col-md-6 pb-4">
+                    <div class="card text-white bg-dark h-100">
+                        <div class="card-header"> @role.Name </div>
+                        <div class="card-body">
+                            <h5>Users</h5>
+                            @foreach (var user in role.Users)
+	                        {
+		                        <p class="card-text">@user.UserName</p>
+	                        }
+                        </div>
+                        <div class="card-foter">
+                            <a class="btn btn-sm btn-danger btnDelete roleDelete"
+                               asp-action="DeleteRole" asp-controller="Admin" asp-route-id="@role.RoleId"
+                               data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET"
+                               data-ajax-update="#roleManage">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+
+            }
+        }
+    </div>
+   
+</div>

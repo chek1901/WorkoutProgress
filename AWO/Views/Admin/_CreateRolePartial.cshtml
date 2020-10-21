@@ -1,0 +1,42 @@
+﻿@model CreateRoleViewModel
+
+@{
+    ViewData["Header"] = "Create role";
+}
+
+<div class="modal fade" id="createRoleModal" role="dialog" aria-hidden="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Header</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-action="CreateRole" asp-controller="Admin">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div class="form-group row">
+                        <div class="form-group">
+                            <label asp-for="RoleName" class="col-md-6 col-form-label"></label>
+                            <div class="col-md-12">
+                                <input asp-for="RoleName" type="text"
+                                       class="form-control" placeholder="Enter new rolename" />
+                            </div>
+                            <div class="col">
+                                <span asp-validation-for="RoleName" class="text-danger border-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary" data-save="modal"> Add role </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

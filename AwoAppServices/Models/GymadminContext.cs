@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AwoAppServices.Models
 {
-    public partial class GymadminContext : IdentityDbContext<ApplicationUser>
+    public partial class GymadminContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public GymadminContext()
         {

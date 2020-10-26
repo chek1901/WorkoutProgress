@@ -32,7 +32,7 @@ namespace AWO
                     options.UseSqlServer(
                     Configuration.GetConnectionString("GymadminConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
              .AddEntityFrameworkStores<GymadminContext>()
              .AddDefaultTokenProviders();
 

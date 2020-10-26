@@ -81,7 +81,7 @@
 
 /*   END OF HAMBURGER ICON CODE PART 2 */
 
-#logout {
+/*#logout {
     box-shadow: 3px 4px 0px 0px #8a2a21;
     background: linear-gradient(to bottom, #c62d1f 5%, #ffcdc9 100%);
     background-color: #c62d1f;
@@ -110,7 +110,7 @@
 
     .logout {
         padding-top: 10px !important;
-    }
+    }*/
 
 @media all and (max-width: 767px) {
    
@@ -140,3 +140,20 @@
         }
             
 }
+
+#manage {
+    color: #452c63;
+}
+    #manage:hover {
+        color: #4B9CD3;
+    }
+
+.logout {
+    color: #A52A2A !important;
+    border: none;
+    background: transparent;
+}
+
+    .logout:hover {
+        color: #CD5C5C !important;
+    }

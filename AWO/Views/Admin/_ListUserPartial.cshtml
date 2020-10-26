@@ -1,58 +1,63 @@
 ﻿@model UserListViewModel
 
-<div class="card border-0 w-100">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-6">
-                <h4 class="card-title"> Manage Users</h4>
-            </div>
-            <div class="col-6 text-right p-2">
-                <button class="btn btn-warning"> Add new user</button>
-            </div>
+<div class="container border-0 w-100">
+    <div class="row">
+        <div class="col-6">
+            <h4 class="section-header"> Manage Users </h4>
         </div>
-            <table class="table table-striped table-light table-primary">
-                <thead class="thead-light">
-                    <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Email</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                        int i = 1;
-                    }
-                    @foreach (var user in Model.Users)
-                    {
-                        <tr>
-                            <th scope="row">@i</th>
-                            <td>@user.UserName</td>
-                            <td>@user.Email</td>
-                            <td>
-                                <form method="post" asp-action="DeleteUser" asp-controller="Admin">
 
-                                    <button type="submit" class="btn btn-sm btn-warning rounded-right">
-                                        <i class="fas fa-edit"></i>
-                                        <span>Edit</span>
-                                    </button>
-
-                                </form>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="far fa-trash-alt"></i>
-                                    <span> Delete </span>
-                                </a>
-                            </td>
-                        </tr>
-                        i++;
-                    }
-
-
-                </tbody>
-            </table>
+        <div class="col-6 text-right p-2">
+            </div>
     </div>
-</div>
+    <div class="row d-flex align-content-space-around flex-wrap">
+
+        @if (Model.Users.Any())
+        {
+            int controlNbr = 0;
+            foreach (var role in Model.Roles)
+            {
+                <div class="col-12">
+                    <h5 class="lead"> @role.Name </h5>
+                </div>
+                foreach (var user in Model.Users)
+                {
+                    
+                    if (user.RoleName == role.Name)
+                    {
+                        <div class="col-lg-4 col-md-6 pb-4">
+                            <div class="card text-white bg-dark h-100">
+                                <div class="card-header d-flex">
+                                    <span>@user.UserName</span>
+
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text text-muted">@user.Email</p>
+                                </div>
+                                <div class="card-foter text-center">
+                                    <button type="button" class="btn btn-warning openModal"
+                                            data-toggle="ajax-modal-updateUser"
+                                            data-target="#updateUserModal"
+                                            data-url="@Url.Action("UpdateUser")"
+                                            data-userId="@user.Id">
+                                        UpdateUser
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        controlNbr++;
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            <p class="lead font-weight-bold"> NO USERS REGISTERED YET</p>
+        }
+    </div>
+
+ </div>
 

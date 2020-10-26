@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using AWO.Services;
 using AWO.ViewModels;
 using AWO.ViewModels.Account;
 using AwoAppServices.Models;
@@ -106,6 +108,7 @@ namespace AWO.Controllers
                         UserName = model.UserName,
                         Email = model.Email,
                         EmailConfirmed = true,
+                        RoleName = Enum.GetName(typeof(RoleEnum), RoleEnum.User),
                         GymUserId = gymId
                     };
 
@@ -133,7 +136,6 @@ namespace AWO.Controllers
                     ModelState.AddModelError("UserName", "User already exists");
                     return View();
                 }
-
 
             }
             return View();

@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200909055149_ExtendedIdentity.cs" />
     <Compile Remove="Migrations\20200909055149_ExtendedIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20201021131905_extend_identity_user.cs" />
+    <Compile Remove="Migrations\20201021131905_extend_identity_user.Designer.cs" />
+    <Compile Remove="Migrations\20201021132525_Extended_identityRole.cs" />
+    <Compile Remove="Migrations\20201021132525_Extended_identityRole.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

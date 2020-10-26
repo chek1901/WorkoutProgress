@@ -39,7 +39,7 @@ namespace AWO
     //                var services = scope.ServiceProvider;
     //                var context = services.GetRequiredService<GymadminContext>();
     //                var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-    //                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    //                var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
     //                var seeding = new DatabaseInitializer();
     //                seeding.Initialize(context, userManager, roleManager).Wait();
 

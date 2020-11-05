@@ -1,6 +1,44 @@
 ﻿$(document).ready(function () {
 
+    $(document).on('submit', '#userInfoForm', function (event) {
+        event.preventDefault();
+        var placeholder = $('#userInfoDiv');
+        var form = $('#userInfoForm');
+        var urlAction = form.attr('action');
+        var dataToSend = form.serialize();
+
+        $.post(urlAction, dataToSend).done(function (data) {
+            var newBody = $('#userInfoForm', data);
+            placeholder.find('form').replaceWith(newBody);
+
+            var isValid = newBody.find('[name="IsValid"]').val() == 'True';
+
+            if (isValid) {
+                console.log("its valid");
+                Swal.fire({
+                    position: 'middle',
+                    icon: 'success',
+                    title: 'User updated',
+                    showConfirmButton: true
+                });
+            }
+            else
+            {
+                Swal.fire({
+                    position: 'middle',
+                    icon: 'error',
+                    title: 'User not updated',
+                    showConfirmButton: true
+                });
+                console.log("not valid");
+            }
+        });
+       
+    });
+
+
     $(function () {
+
         var placeholderElement = $('#modal-updateUser');
 
         $(document).on('click', 'button[data-toggle="ajax-modal-updateUser"]', function () {
@@ -30,6 +68,7 @@
                     $.ajax({
                         type: "get",
                         url: "/Admin/ListUsers",
+                        dataType: 'json',
                         contentType: "application/json; charset=utf-8",
                         success: function (response) {
                             console.log("It works");
@@ -53,4 +92,5 @@
                
     });
 
+    
 });

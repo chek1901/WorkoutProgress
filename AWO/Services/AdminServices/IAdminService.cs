@@ -9,12 +9,14 @@ namespace AWO.Services.Interfaces
 {
     public interface IAdminService
     {
-        Task<IEnumerable<ApplicationUser>> GetUsersInrole(string roleName);
         Task<UpdateUserEnum> UpdateUser(UpdateUserViewModel model);
 
         Task <RoleCreation> CreateRole(string roleName);
+
         Task<IEnumerable<RoleObject>> GetRoles();
+
         IEnumerable<SelectListItem> GetRolesAsSelectList(string currentRole);
+
         Task<ApplicationUser> GetUser(string id);
     }
 }

@@ -5,7 +5,6 @@
     <UserSecretsId>ae23f508-a771-4364-b6bb-30c8fcade59e</UserSecretsId>
     <!--<IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>-->
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
-
   </PropertyGroup>
 
   <ItemGroup>

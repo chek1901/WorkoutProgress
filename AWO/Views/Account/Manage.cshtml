@@ -6,31 +6,27 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-10">
             <div class="section-header">
-
-                <h1 class="text-center"> @ViewData["Title"] > > </h1>
+                <h1 class="text-center"> @ViewData["Title"]</h1>
             </div>
         </div>
-
-        <div class="col-4">
-                <p class="lead font-weight-lighter"> @Model.User.UserName </p>
-            <p class="lead"></p>
+        <div class="col-10">
+            <h3 class="text-center lead font-weight-lighter"> < @Model.User.UserName (@Model.User.RoleName) > </h3>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-5 col-sm-6 text-center">
+        <div class="col-lg-4 col-md-5 col-sm-12 text-center">
             <h2>Personal info</h2>
-            <p >Click on the button to toggle between showing and hiding content.</p>
-            <button type="button" class="btn btn-primary m-2" data-toggle="collapse" data-target="#demo">View User info</button>
-            <button type="button" class="myBtn">  PRESS ME </button>
+            <button type="button" class="btn btn-primary m-2" data-toggle="collapse" data-target="#userInfoDiv">Toggle User info</button>
         </div>
-    @*</div>*@
-    @*<div class="row justify-content-center">*@
 
-        <div class="col-lg-4 col-md-5 col-sm-6 float-left">
-            <div id="demo" class="collapse">
-                <form method="post" asp-action="Manage" asp-controller="Account">
+        <div class="col-lg-4 col-md-5 col-sm-12">
+            <div id="userInfoDiv" class="collapse show">
+                <form method="post" asp-action="Manage" asp-controller="Account" id="userInfoForm">
+
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+
                     <div class="input-group input-group-lg m-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text iconCustom" id="inputGroup-sizing-lg">
@@ -61,8 +57,8 @@
                         </div>
                         <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
                                asp-for="FirstName" placeholder="Enter given name">
-                        <span asp-validation-for="FirstName"></span>
                     </div>
+                    <span asp-validation-for="FirstName"></span>
 
                     <div class="input-group input-group-lg m-1">
                         <div class="input-group-prepend">
@@ -73,8 +69,8 @@
                         </div>
                         <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
                                asp-for="LastName" placeholder="Enter surname">
-                        <span asp-validation-for="LastName"></span>
                     </div>
+                    <span asp-validation-for="LastName"></span>
 
                     <div class="input-group input-group-lg m-1">
                         <div class="input-group-prepend">
@@ -86,10 +82,11 @@
                         </div>
                         <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
                                asp-for="Telephone" placeholder="Enter mobile number...">
-                        <span asp-validation-for="Telephone"></span>
                     </div>
+                    <span asp-validation-for="Telephone"></span>
+
                     <div class="input-group m-2">
-                        <button type="submit" class="btn btn-primary"> Apply changes </button>
+                        <button type="submit" class="btn btn-outline-primary" id="manageUserInfoBtn"> Apply changes </button>
                     </div>
                 </form>
 

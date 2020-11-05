@@ -67,10 +67,9 @@ namespace AWO.Services
             return RoleCreation.RoleExist;
         }
 
-        //kanske göra denna private? Används ändå bara inifrån Service metoden.
-        public async Task<IEnumerable<ApplicationUser>> GetUsersInrole(string roleName)
+        private async Task<IEnumerable<ApplicationUser>> GetUsersInrole(string roleName)
         {
-            IEnumerable<ApplicationUser> usersInRole = 
+            IEnumerable<ApplicationUser> usersInRole =
                 await _userManager.GetUsersInRoleAsync(roleName);
 
             return usersInRole;
@@ -113,7 +112,6 @@ namespace AWO.Services
             };
 
             roleList.Insert(0, defaultChoice);
-
 
             return roleList;
         }

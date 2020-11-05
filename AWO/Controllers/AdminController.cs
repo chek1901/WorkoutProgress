@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using AWO.Services;
 using AWO.Services.Interfaces;
@@ -53,11 +52,7 @@ namespace AWO.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateRole()
-        {
-            var model = new CreateRoleViewModel();
-            return PartialView("_CreateRolePartial", model);
-        }
+        public IActionResult CreateRole() => PartialView("_CreateRolePartial", new CreateRoleViewModel());
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
@@ -81,6 +76,7 @@ namespace AWO.Controllers
                         return PartialView("_CreateRolePartial", model);
                 }
             }
+
             return PartialView("_CreateRolePartial", model);
         }
 
@@ -121,7 +117,6 @@ namespace AWO.Controllers
         [HttpGet]
         public IActionResult ListUsers()
         {
-
             return PartialView("_ListUserPartial", new UserListViewModel
             {
                 Users = _userManager.Users.OrderBy(x => x.UserName),

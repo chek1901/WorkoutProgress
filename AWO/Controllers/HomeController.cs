@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using AWO.Models;
-using AwoAppServices.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,22 +10,20 @@ namespace AWO.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly RoleManager<ApplicationRole> roleManager;
-        private readonly UserManager<ApplicationUser> userManager;
 
-        public HomeController(ILogger<HomeController> logger, 
-            RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            this.roleManager = roleManager;
-            this.userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            //var loggedInUser = userManager.GetUserAsync(User);
-            //if(roleManager.RoleExistsAsync(''))
-
+            _logger.LogTrace("This is a trace log");
+            _logger.LogDebug("This is a debug log");
+            _logger.LogInformation("This is an information log");
+            _logger.LogError("This is an error log");
+            _logger.LogWarning("This is a warning log");
+            _logger.LogCritical("This is a critical log");
             return View();
         }
 

@@ -111,7 +111,6 @@ namespace AWO
 
             app.UseRouting();
 
-
             app.UseAuthentication();
 
             app.UseAuthorization();
